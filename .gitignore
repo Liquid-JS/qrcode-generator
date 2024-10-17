@@ -1,0 +1,21 @@
+# IDEA
+.idea
+
+# Lib folder
+/lib
+
+# npm modules
+/node_modules
+
+# Tests coverage results
+/coverage
+
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.cache
+
+docs
