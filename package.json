@@ -5,6 +5,19 @@
   "type": "module",
   "main": "./lib/qr-code.js",
   "types": "./lib/qr-code.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./lib/qr-code.d.ts",
+      "default": "./lib/qr-code.js"
+    },
+    "./lib/**/*.js": {
+      "types": "./lib/**/*.d.ts",
+      "default": "./lib/**/*.js"
+    }
+  },
   "files": [
     "lib"
   ],
