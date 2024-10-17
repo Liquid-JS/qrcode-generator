@@ -13,9 +13,25 @@
       "types": "./lib/qr-code.d.ts",
       "default": "./lib/qr-code.js"
     },
-    "./lib/**/*.js": {
-      "types": "./lib/**/*.d.ts",
-      "default": "./lib/**/*.js"
+    "./lib/qrcode/QRCode.js": {
+      "types": "./lib/qrcode/QRCode.d.ts",
+      "default": "./lib/qrcode/QRCode.js"
+    },
+    "./lib/qrcode/QRCodeMinimal.js": {
+      "types": "./lib/qrcode/QRCodeMinimal.d.ts",
+      "default": "./lib/qrcode/QRCodeMinimal.js"
+    },
+    "./lib/qrcode/QRUtil.js": {
+      "types": "./lib/qrcode/QRUtil.d.ts",
+      "default": "./lib/qrcode/QRUtil.js"
+    },
+    "./lib/text/stringToBytes_UTF8.js": {
+      "types": "./lib/text/stringToBytes_UTF8.d.ts",
+      "default": "./lib/text/stringToBytes_UTF8.js"
+    },
+    "./lib/text/stringToBytes_SJIS.js": {
+      "types": "./lib/text/stringToBytes_SJIS.d.ts",
+      "default": "./lib/text/stringToBytes_SJIS.js"
     }
   },
   "files": [
