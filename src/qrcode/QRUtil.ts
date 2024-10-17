@@ -2,7 +2,7 @@ import { ErrorCorrectLevel } from "./ErrorCorrectLevel.js";
 import { MaskPattern } from "./MaskPattern.js";
 import { Mode } from "./Mode.js";
 import { Polynomial } from "./Polynomial.js";
-import { QRCodeMinimal } from "./QRCode.js";
+import { QRCodeMinimal } from "./QRCodeMinimal.js";
 import { QRMath } from "./QRMath.js";
 
 /**
