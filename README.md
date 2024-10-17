@@ -16,11 +16,11 @@
 
 ```javascript
 var typeNumber = 4;
-var errorCorrectionLevel = 'L';
+var errorCorrectionLevel = "L";
 var qr = qrcode(typeNumber, errorCorrectionLevel);
-qr.addData('Hi!');
+qr.addData("Hi!");
 qr.make();
-document.getElementById('placeHolder').innerHTML = qr.createImgTag();
+document.getElementById("placeHolder").innerHTML = qr.createImgTag();
 ```
 
 ## API Documentation
@@ -87,7 +87,7 @@ _[Note] call make() before this function._
 #### createASCII(cellSize, margin) => <code>string</code>
 
 Helper functions for HTML.
- _[Note] call make() before these functions._
+_[Note] call make() before these functions._
 
 | Param    | Type                | Description            |
 | -------- | ------------------- | ---------------------- |

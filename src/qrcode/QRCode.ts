@@ -27,7 +27,7 @@ import { QRNumber } from "./QRNumber.js";
 import { QRUtil } from "./QRUtil.js";
 import { RSBlock } from "./RSBlock.js";
 
-export type TypeNumber =
+type TypeNumber =
   | 0 // Automatic type number
   | 1
   | 2
@@ -69,6 +69,14 @@ export type TypeNumber =
   | 38
   | 39
   | 40;
+
+const TypeNumber = Array(41)
+  .fill(0)
+  .map((_, i) => i) as unknown as {
+  [P in TypeNumber]: P;
+};
+
+export { TypeNumber };
 
 export enum ErrorCorrectionLevel {
   L = "L",
