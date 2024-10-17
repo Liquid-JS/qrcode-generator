@@ -1,6 +1,6 @@
 {
   "name": "@liquid-js/qrcode-generator",
-  "version": "1.0.0-3",
+  "version": "1.0.0-4",
   "description": "QR Code Generator implementation in JavaScript.",
   "type": "module",
   "main": "./lib/qr-code.js",
