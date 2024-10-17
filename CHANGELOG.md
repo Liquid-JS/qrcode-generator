@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-6](https://github.com/Liquid-JS/qrcode-generator/compare/v1.0.0-5...v1.0.0-6) (2024-10-17)
+
+
+### Bug Fixes
+
+* exports ([0d662f3](https://github.com/Liquid-JS/qrcode-generator/commit/0d662f31b9ed61241b0de152dd7dabcac259154e))
+
 ## [1.0.0-5](https://github.com/Liquid-JS/qrcode-generator/compare/v1.0.0-4...v1.0.0-5) (2024-10-17)
 
 ## [1.0.0-4](https://github.com/Liquid-JS/qrcode-generator/compare/v1.0.0-3...v1.0.0-4) (2024-10-17)
