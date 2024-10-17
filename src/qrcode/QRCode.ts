@@ -144,7 +144,7 @@ export class QRCodeMinimal {
     this.qrDataList = [];
   }
 
-  public addData(qrData: QRData | string, mode = Mode.byte): void {
+  public addData(qrData: QRData | string, mode: `${Mode}` = Mode.byte): void {
     if (qrData instanceof QRData) {
       this.qrDataList.push(qrData);
     } else if (typeof qrData === "string") {
