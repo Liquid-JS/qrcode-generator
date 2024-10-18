@@ -21,5 +21,5 @@ export enum Mode {
   /**
    * KANJI
    */
-  MODE_KANJI = 1 << 3,
+  MODE_KANJI = 1 << 3
 }

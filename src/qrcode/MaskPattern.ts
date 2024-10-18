@@ -41,5 +41,5 @@ export enum MaskPattern {
   /**
    * mask pattern 111
    */
-  PATTERN111 = 0b111,
+  PATTERN111 = 0b111
 }

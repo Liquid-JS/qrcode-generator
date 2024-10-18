@@ -16,14 +16,14 @@ export class QRCode extends QRCodeMinimal {
       "██": "█",
       "█ ": "▀",
       " █": "▄",
-      "  ": " ",
+      "  ": " "
     };
 
     const blocksLastLineNoMargin: { [s: string]: string } = {
       "██": "▀",
       "█ ": "▀",
       " █": " ",
-      "  ": " ",
+      "  ": " "
     };
 
     let ascii = "";
@@ -33,40 +33,25 @@ export class QRCode extends QRCodeMinimal {
       for (x = 0; x < size; x += 1) {
         p = "█";
 
-        if (
-          min <= x &&
-          x < max &&
-          min <= y &&
-          y < max &&
-          this.isDark(r1, Math.floor((x - min) / cellSize))
-        ) {
+        if (min <= x && x < max && min <= y && y < max && this.isDark(r1, Math.floor((x - min) / cellSize))) {
           p = " ";
         }
 
-        if (
-          min <= x &&
-          x < max &&
-          min <= y + 1 &&
-          y + 1 < max &&
-          this.isDark(r2, Math.floor((x - min) / cellSize))
-        ) {
+        if (min <= x && x < max && min <= y + 1 && y + 1 < max && this.isDark(r2, Math.floor((x - min) / cellSize))) {
           p += " ";
         } else {
           p += "█";
         }
 
         // Output 2 characters per pixel, to create full square. 1 character per pixels gives only half width of square.
-        ascii +=
-          margin < 1 && y + 1 >= max ? blocksLastLineNoMargin[p] : blocks[p];
+        ascii += margin < 1 && y + 1 >= max ? blocksLastLineNoMargin[p] : blocks[p];
       }
 
       ascii += "\n";
     }
 
     if (size % 2 && margin > 0) {
-      return (
-        ascii.substring(0, ascii.length - size - 1) + Array(size + 1).join("▀")
-      );
+      return ascii.substring(0, ascii.length - size - 1) + Array(size + 1).join("▀");
     }
 
     return ascii.substring(0, ascii.length - 1);
@@ -97,13 +82,7 @@ export class QRCode extends QRCodeMinimal {
       for (let x = 0; x < size; x += 1) {
         let p = 1;
 
-        if (
-          min <= x &&
-          x < max &&
-          min <= y &&
-          y < max &&
-          this.isDark(r, Math.floor((x - min) / cellSize))
-        ) {
+        if (min <= x && x < max && min <= y && y < max && this.isDark(r, Math.floor((x - min) / cellSize))) {
           p = 0;
         }
 
@@ -119,10 +98,7 @@ export class QRCode extends QRCodeMinimal {
     return ascii.substring(0, ascii.length - 1);
   }
 
-  public renderTo2dContext(
-    context: CanvasRenderingContext2D,
-    cellSize?: number,
-  ) {
+  public renderTo2dContext(context: CanvasRenderingContext2D, cellSize?: number) {
     cellSize = cellSize || 2;
     const length = this.getModuleCount();
     for (let row = 0; row < length; row++) {
@@ -203,61 +179,35 @@ export class QRCode extends QRCodeMinimal {
     opts = opts || {};
 
     const cellSize = opts.cellSize || 2;
-    const margin =
-      typeof opts.margin == "undefined" ? cellSize * 4 : opts.margin;
+    const margin = typeof opts.margin == "undefined" ? cellSize * 4 : opts.margin;
 
     // Compose alt property surrogate
-    const alt =
-      typeof opts.alt === "string" ? { text: opts.alt } : opts.alt || {};
+    const alt = typeof opts.alt === "string" ? { text: opts.alt } : opts.alt || {};
     alt.text = alt.text || null;
     alt.id = alt.text ? alt.id || "qrcode-description" : null;
 
     // Compose title property surrogate
-    const title =
-      typeof opts.title === "string" ? { text: opts.title } : opts.title || {};
+    const title = typeof opts.title === "string" ? { text: opts.title } : opts.title || {};
     title.text = title.text || null;
     title.id = title.text ? title.id || "qrcode-title" : null;
 
     const size = this.getModuleCount() * cellSize + margin * 2;
     let qrSvg = "";
 
-    const rect =
-      "l" +
-      cellSize +
-      ",0 0," +
-      cellSize +
-      " -" +
-      cellSize +
-      ",0 0,-" +
-      cellSize +
-      "z ";
+    const rect = "l" + cellSize + ",0 0," + cellSize + " -" + cellSize + ",0 0,-" + cellSize + "z ";
 
     qrSvg += '<svg version="1.1" xmlns="http://www.w3.org/2000/svg"';
-    qrSvg += !opts.scalable
-      ? ' width="' + size + 'px" height="' + size + 'px"'
-      : "";
+    qrSvg += !opts.scalable ? ' width="' + size + 'px" height="' + size + 'px"' : "";
     qrSvg += ' viewBox="0 0 ' + size + " " + size + '" ';
     qrSvg += ' preserveAspectRatio="xMinYMin meet"';
     qrSvg +=
       title.text || alt.text
-        ? ' role="img" aria-labelledby="' +
-          escapeXml([title.id, alt.id].join(" ").trim()) +
-          '"'
+        ? ' role="img" aria-labelledby="' + escapeXml([title.id, alt.id].join(" ").trim()) + '"'
         : "";
     qrSvg += ">";
-    qrSvg += title.text
-      ? '<title id="' +
-        escapeXml(title.id || "") +
-        '">' +
-        escapeXml(title.text) +
-        "</title>"
-      : "";
+    qrSvg += title.text ? '<title id="' + escapeXml(title.id || "") + '">' + escapeXml(title.text) + "</title>" : "";
     qrSvg += alt.text
-      ? '<description id="' +
-        escapeXml(alt.id || "") +
-        '">' +
-        escapeXml(alt.text) +
-        "</description>"
+      ? '<description id="' + escapeXml(alt.id || "") + '">' + escapeXml(alt.text) + "</description>"
       : "";
     qrSvg += '<rect width="100%" height="100%" fill="white" cx="0" cy="0"/>';
     qrSvg += '<path d="';

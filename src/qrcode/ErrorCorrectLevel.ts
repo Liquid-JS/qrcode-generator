@@ -21,5 +21,5 @@ export enum ErrorCorrectLevel {
   /**
    * 30%
    */
-  H = 2,
+  H = 2
 }

@@ -1,4 +1,4 @@
-import { ErrorCorrectLevel } from "./ErrorCorrectLevel";
+import { ErrorCorrectLevel } from "./ErrorCorrectLevel.js";
 
 /**
  * RSBlock
@@ -249,12 +249,12 @@ export class RSBlock {
     [19, 148, 118, 6, 149, 119],
     [18, 75, 47, 31, 76, 48],
     [34, 54, 24, 34, 55, 25],
-    [20, 45, 15, 61, 46, 16],
+    [20, 45, 15, 61, 46, 16]
   ];
 
   constructor(
     private totalCount: number,
-    private dataCount: number,
+    private dataCount: number
   ) {}
 
   public getDataCount(): number {
@@ -265,10 +265,7 @@ export class RSBlock {
     return this.totalCount;
   }
 
-  public static getRSBlocks(
-    typeNumber: number,
-    errorCorrectLevel: ErrorCorrectLevel,
-  ): RSBlock[] {
+  public static getRSBlocks(typeNumber: number, errorCorrectLevel: ErrorCorrectLevel): RSBlock[] {
     const rsBlock = RSBlock.getRsBlockTable(typeNumber, errorCorrectLevel);
     const length = rsBlock.length / 3;
 
@@ -287,10 +284,7 @@ export class RSBlock {
     return list;
   }
 
-  private static getRsBlockTable(
-    typeNumber: number,
-    errorCorrectLevel: ErrorCorrectLevel,
-  ): number[] {
+  private static getRsBlockTable(typeNumber: number, errorCorrectLevel: ErrorCorrectLevel): number[] {
     switch (errorCorrectLevel) {
       case ErrorCorrectLevel.L:
         return RSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 0];

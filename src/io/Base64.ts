@@ -30,9 +30,7 @@ export class Base64 {
   public static decode(data: number[]): number[] {
     const bout = new ByteArrayOutputStream();
     try {
-      const istream = new Base64DecodeInputStream(
-        new ByteArrayInputStream(data),
-      );
+      const istream = new Base64DecodeInputStream(new ByteArrayInputStream(data));
       try {
         let b: number;
         while ((b = istream.readByte()) != -1) {

@@ -9,7 +9,7 @@ import { QRData } from "./QRData.js";
 export class QR8BitByte extends QRData {
   constructor(
     data: string,
-    private stringToBytes: (s: string) => number[],
+    private stringToBytes: (s: string) => number[]
   ) {
     super(Mode.MODE_8BIT_BYTE, data);
   }

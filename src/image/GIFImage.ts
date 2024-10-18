@@ -163,12 +163,7 @@ export class GIFImage {
     out.writeByte((i >>> 8) & 0xff);
   }
 
-  private writeBytes(
-    out: OutputStream,
-    bytes: number[],
-    off: number,
-    len: number,
-  ) {
+  private writeBytes(out: OutputStream, bytes: number[], off: number, len: number) {
     for (let i = 0; i < len; i += 1) {
       out.writeByte(bytes[i + off]);
     }

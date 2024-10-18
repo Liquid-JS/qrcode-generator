@@ -62,9 +62,7 @@ export class Polynomial {
     }
     for (let i = 0; i < this.getLength(); i += 1) {
       for (let j = 0; j < e.getLength(); j += 1) {
-        num[i + j] ^= QRMath.gexp(
-          QRMath.glog(this.getAt(i)) + QRMath.glog(e.getAt(j)),
-        );
+        num[i + j] ^= QRMath.gexp(QRMath.glog(this.getAt(i)) + QRMath.glog(e.getAt(j)));
       }
     }
     return new Polynomial(num);

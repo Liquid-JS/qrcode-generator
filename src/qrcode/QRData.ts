@@ -8,7 +8,7 @@ import { Mode } from "./Mode.js";
 export abstract class QRData {
   constructor(
     private mode: Mode,
-    private data: string,
+    private data: string
   ) {}
 
   public getMode(): Mode {

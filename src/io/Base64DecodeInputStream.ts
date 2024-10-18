@@ -40,12 +40,7 @@ export class Base64DecodeInputStream extends InputStream {
   }
 
   private static isWhitespace(c: number): boolean {
-    return (
-      c == "\v".charCodeAt(0) ||
-      c == "\t".charCodeAt(0) ||
-      c == "\r".charCodeAt(0) ||
-      c == "\n".charCodeAt(0)
-    );
+    return c == "\v".charCodeAt(0) || c == "\t".charCodeAt(0) || c == "\r".charCodeAt(0) || c == "\n".charCodeAt(0);
   }
 
   private static decode(c: number): number {

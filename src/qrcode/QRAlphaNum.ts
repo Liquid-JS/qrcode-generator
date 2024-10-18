@@ -17,11 +17,7 @@ export class QRAlphaNum extends QRData {
     let i = 0;
 
     while (i + 1 < s.length) {
-      buffer.put(
-        QRAlphaNum.getCode(s.charAt(i)) * 45 +
-          QRAlphaNum.getCode(s.charAt(i + 1)),
-        11,
-      );
+      buffer.put(QRAlphaNum.getCode(s.charAt(i)) * 45 + QRAlphaNum.getCode(s.charAt(i + 1)), 11);
       i += 2;
     }
 

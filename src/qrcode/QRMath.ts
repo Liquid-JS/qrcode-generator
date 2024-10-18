@@ -17,10 +17,7 @@ export class QRMath {
       QRMath.EXP_TABLE.push(
         i < 8
           ? 1 << i
-          : QRMath.EXP_TABLE[i - 4] ^
-              QRMath.EXP_TABLE[i - 5] ^
-              QRMath.EXP_TABLE[i - 6] ^
-              QRMath.EXP_TABLE[i - 8],
+          : QRMath.EXP_TABLE[i - 4] ^ QRMath.EXP_TABLE[i - 5] ^ QRMath.EXP_TABLE[i - 6] ^ QRMath.EXP_TABLE[i - 8]
       );
       QRMath.LOG_TABLE.push(0);
     }

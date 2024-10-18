@@ -8,10 +8,7 @@ import { ByteArrayInputStream } from "../io/ByteArrayInputStream.js";
  * [16bit Unicode],[16bit Bytes], ...
  * @param numChars
  */
-export function createStringToBytes(
-  unicodeData: string,
-  numChars: number,
-): (s: string) => number[] {
+export function createStringToBytes(unicodeData: string, numChars: number): (s: string) => number[] {
   function toBytes(s: string): number[] {
     const bytes: number[] = [];
     for (let i = 0; i < s.length; i += 1) {
@@ -21,9 +18,7 @@ export function createStringToBytes(
   }
   // create conversion map.
   const unicodeMap = (function () {
-    const bin = new Base64DecodeInputStream(
-      new ByteArrayInputStream(toBytes(unicodeData)),
-    );
+    const bin = new Base64DecodeInputStream(new ByteArrayInputStream(toBytes(unicodeData)));
     const read = function () {
       const b = bin.readByte();
       if (b == -1) throw "eof";

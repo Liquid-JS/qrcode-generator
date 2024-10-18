@@ -1,20 +1,3 @@
-//---------------------------------------------------------------------
-//
-// QR Code Generator for TypeScript
-//
-// Copyright (c) 2015 Kazuhiko Arase
-//
-// URL: http://www.d-project.com/
-//
-// Licensed under the MIT license:
-//  http://www.opensource.org/licenses/mit-license.php
-//
-// The word 'QR Code' is registered trademark of
-// DENSO WAVE INCORPORATED
-//  http://www.denso-wave.com/qrcode/faqpatent-e.html
-//
-//---------------------------------------------------------------------
-
 import { BitBuffer } from "./BitBuffer.js";
 import { ErrorCorrectLevel } from "./ErrorCorrectLevel.js";
 import { Polynomial } from "./Polynomial.js";
@@ -81,7 +64,7 @@ export enum ErrorCorrectionLevel {
   L = "L",
   M = "M",
   Q = "Q",
-  H = "H",
+  H = "H"
 }
 
 export enum Mode {
@@ -92,7 +75,7 @@ export enum Mode {
    */
   byte = "byte",
   kanji = "kanji",
-  unicode = "unicode",
+  unicode = "unicode"
 }
 
 /**
@@ -116,7 +99,7 @@ export class QRCodeMinimal {
 
   public constructor(
     typeNumber: TypeNumber = 0,
-    errorCorrectionLevel: `${ErrorCorrectionLevel}` = ErrorCorrectionLevel.L,
+    errorCorrectionLevel: `${ErrorCorrectionLevel}` = ErrorCorrectionLevel.L
   ) {
     this.typeNumber = typeNumber;
     this.errorCorrectLevel = ErrorCorrectLevel[errorCorrectionLevel];
@@ -155,19 +138,13 @@ export class QRCodeMinimal {
           this.qrDataList.push(new QRAlphaNum(qrData));
           break;
         case Mode.byte:
-          this.qrDataList.push(
-            new QR8BitByte(qrData, QRCodeMinimal.stringToBytesFuncs.default),
-          );
+          this.qrDataList.push(new QR8BitByte(qrData, QRCodeMinimal.stringToBytesFuncs.default));
           break;
         case Mode.unicode:
-          this.qrDataList.push(
-            new QR8BitByte(qrData, QRCodeMinimal.stringToBytesFuncs["UTF8"]),
-          );
+          this.qrDataList.push(new QR8BitByte(qrData, QRCodeMinimal.stringToBytesFuncs["UTF8"]));
           break;
         case Mode.kanji:
-          this.qrDataList.push(
-            new QRKanji(qrData, QRCodeMinimal.stringToBytesFuncs["SJIS"]),
-          );
+          this.qrDataList.push(new QRKanji(qrData, QRCodeMinimal.stringToBytesFuncs["SJIS"]));
           break;
         default:
           throw "mode:" + mode;
@@ -202,10 +179,7 @@ export class QRCodeMinimal {
       let typeNumber = 1;
 
       for (; typeNumber < 40; typeNumber++) {
-        const rsBlocks = RSBlock.getRSBlocks(
-          typeNumber,
-          this.errorCorrectLevel,
-        );
+        const rsBlocks = RSBlock.getRSBlocks(typeNumber, this.errorCorrectLevel);
         const buffer = new BitBuffer();
 
         for (let i = 0; i < this.qrDataList.length; i++) {
@@ -273,11 +247,7 @@ export class QRCodeMinimal {
       this.setupTypeNumber(test);
     }
 
-    const data = QRCodeMinimal.createData(
-      this.typeNumber,
-      this.errorCorrectLevel,
-      this.qrDataList,
-    );
+    const data = QRCodeMinimal.createData(this.typeNumber, this.errorCorrectLevel, this.qrDataList);
     this.mapData(data, maskPattern);
   }
 
@@ -357,12 +327,7 @@ export class QRCodeMinimal {
   private setupPositionProbePattern(row: number, col: number): void {
     for (let r = -1; r <= 7; r += 1) {
       for (let c = -1; c <= 7; c += 1) {
-        if (
-          row + r <= -1 ||
-          this.moduleCount <= row + r ||
-          col + c <= -1 ||
-          this.moduleCount <= col + c
-        ) {
+        if (row + r <= -1 || this.moduleCount <= row + r || col + c <= -1 || this.moduleCount <= col + c) {
           continue;
         }
 
@@ -398,13 +363,11 @@ export class QRCodeMinimal {
     const bits = QRUtil.getBCHTypeNumber(this.typeNumber);
 
     for (let i = 0; i < 18; i += 1) {
-      this.modules[~~(i / 3)][(i % 3) + this.moduleCount - 8 - 3] =
-        !test && ((bits >> i) & 1) == 1;
+      this.modules[~~(i / 3)][(i % 3) + this.moduleCount - 8 - 3] = !test && ((bits >> i) & 1) == 1;
     }
 
     for (let i = 0; i < 18; i += 1) {
-      this.modules[(i % 3) + this.moduleCount - 8 - 3][~~(i / 3)] =
-        !test && ((bits >> i) & 1) == 1;
+      this.modules[(i % 3) + this.moduleCount - 8 - 3][~~(i / 3)] = !test && ((bits >> i) & 1) == 1;
     }
   }
 
@@ -442,15 +405,8 @@ export class QRCodeMinimal {
     this.modules[this.moduleCount - 8][8] = !test;
   }
 
-  public static createData(
-    typeNumber: number,
-    errorCorrectLevel: ErrorCorrectLevel,
-    dataArray: QRData[],
-  ): number[] {
-    const rsBlocks: RSBlock[] = RSBlock.getRSBlocks(
-      typeNumber,
-      errorCorrectLevel,
-    );
+  public static createData(typeNumber: number, errorCorrectLevel: ErrorCorrectLevel, dataArray: QRData[]): number[] {
+    const rsBlocks: RSBlock[] = RSBlock.getRSBlocks(typeNumber, errorCorrectLevel);
 
     const buffer = new BitBuffer();
 
@@ -468,13 +424,7 @@ export class QRCodeMinimal {
     }
 
     if (buffer.getLengthInBits() > totalDataCount * 8) {
-      throw (
-        "code length overflow. (" +
-        buffer.getLengthInBits() +
-        ">" +
-        totalDataCount * 8 +
-        ")"
-      );
+      throw "code length overflow. (" + buffer.getLengthInBits() + ">" + totalDataCount * 8 + ")";
     }
 
     // end
@@ -587,6 +537,6 @@ export class QRCodeMinimal {
         bytes.push(c & 0xff);
       }
       return bytes;
-    },
+    }
   };
 }

@@ -1,17 +1,15 @@
 // @ts-check
 
 import eslint from "@eslint/js";
-import jest from "eslint-plugin-jest";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
   {
-    ignores: ["lib", "node_modules", "coverage", "docs"],
+    ignores: ["lib", "node_modules", "coverage", "docs"]
   },
   eslint.configs.recommended,
   eslintPluginPrettierRecommended,
-  jest.configs["flat/recommended"],
   ...tseslint.configs.recommended,
   tseslint.configs.eslintRecommended,
   {
@@ -25,10 +23,10 @@ export default tseslint.config(
           caughtErrorsIgnorePattern: "^_",
           destructuredArrayIgnorePattern: "^_",
           varsIgnorePattern: "^_",
-          ignoreRestSiblings: true,
-        },
+          ignoreRestSiblings: true
+        }
       ],
-      "no-undef": "off",
-    },
-  },
+      "no-undef": "off"
+    }
+  }
 );

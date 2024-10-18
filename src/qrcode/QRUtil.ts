@@ -58,7 +58,7 @@ export class QRUtil {
     [6, 28, 54, 80, 106, 132, 158],
     [6, 32, 58, 84, 110, 136, 162],
     [6, 26, 54, 82, 110, 138, 166],
-    [6, 30, 58, 86, 114, 142, 170],
+    [6, 30, 58, 86, 114, 142, 170]
   ];
 
   private static MAX_LENGTH = [
@@ -66,69 +66,65 @@ export class QRUtil {
       [41, 25, 17, 10],
       [34, 20, 14, 8],
       [27, 16, 11, 7],
-      [17, 10, 7, 4],
+      [17, 10, 7, 4]
     ],
     [
       [77, 47, 32, 20],
       [63, 38, 26, 16],
       [48, 29, 20, 12],
-      [34, 20, 14, 8],
+      [34, 20, 14, 8]
     ],
     [
       [127, 77, 53, 32],
       [101, 61, 42, 26],
       [77, 47, 32, 20],
-      [58, 35, 24, 15],
+      [58, 35, 24, 15]
     ],
     [
       [187, 114, 78, 48],
       [149, 90, 62, 38],
       [111, 67, 46, 28],
-      [82, 50, 34, 21],
+      [82, 50, 34, 21]
     ],
     [
       [255, 154, 106, 65],
       [202, 122, 84, 52],
       [144, 87, 60, 37],
-      [106, 64, 44, 27],
+      [106, 64, 44, 27]
     ],
     [
       [322, 195, 134, 82],
       [255, 154, 106, 65],
       [178, 108, 74, 45],
-      [139, 84, 58, 36],
+      [139, 84, 58, 36]
     ],
     [
       [370, 224, 154, 95],
       [293, 178, 122, 75],
       [207, 125, 86, 53],
-      [154, 93, 64, 39],
+      [154, 93, 64, 39]
     ],
     [
       [461, 279, 192, 118],
       [365, 221, 152, 93],
       [259, 157, 108, 66],
-      [202, 122, 84, 52],
+      [202, 122, 84, 52]
     ],
     [
       [552, 335, 230, 141],
       [432, 262, 180, 111],
       [312, 189, 130, 80],
-      [235, 143, 98, 60],
+      [235, 143, 98, 60]
     ],
     [
       [652, 395, 271, 167],
       [513, 311, 213, 131],
       [364, 221, 151, 93],
-      [288, 174, 119, 74],
-    ],
+      [288, 174, 119, 74]
+    ]
   ];
 
-  public static getMaxLength(
-    typeNumber: number,
-    mode: Mode,
-    errorCorrectLevel: ErrorCorrectLevel,
-  ): number {
+  public static getMaxLength(typeNumber: number, mode: Mode, errorCorrectLevel: ErrorCorrectLevel): number {
     const t = typeNumber - 1;
     let e = 0;
     let m = 0;
@@ -170,9 +166,7 @@ export class QRUtil {
     return QRUtil.MAX_LENGTH[t][e][m];
   }
 
-  public static getErrorCorrectPolynomial(
-    errorCorrectLength: number,
-  ): Polynomial {
+  public static getErrorCorrectPolynomial(errorCorrectLength: number): Polynomial {
     let a = new Polynomial([1]);
 
     for (let i = 0; i < errorCorrectLength; i += 1) {
@@ -182,9 +176,7 @@ export class QRUtil {
     return a;
   }
 
-  public static getMaskFunc(
-    maskPattern: number,
-  ): (i: number, j: number) => boolean {
+  public static getMaskFunc(maskPattern: number): (i: number, j: number) => boolean {
     switch (maskPattern) {
       case MaskPattern.PATTERN000:
         return (i: number, j: number) => (i + j) % 2 == 0;
@@ -199,11 +191,9 @@ export class QRUtil {
       case MaskPattern.PATTERN101:
         return (i: number, j: number) => ((i * j) % 2) + ((i * j) % 3) == 0;
       case MaskPattern.PATTERN110:
-        return (i: number, j: number) =>
-          (((i * j) % 2) + ((i * j) % 3)) % 2 == 0;
+        return (i: number, j: number) => (((i * j) % 2) + ((i * j) % 3)) % 2 == 0;
       case MaskPattern.PATTERN111:
-        return (i: number, j: number) =>
-          (((i * j) % 3) + ((i + j) % 2)) % 2 == 0;
+        return (i: number, j: number) => (((i * j) % 3) + ((i + j) % 2)) % 2 == 0;
 
       default:
         throw "mask:" + maskPattern;
@@ -309,8 +299,7 @@ export class QRUtil {
       }
     }
 
-    const ratio =
-      Math.abs((100 * darkCount) / moduleCount / moduleCount - 50) / 5;
+    const ratio = Math.abs((100 * darkCount) / moduleCount / moduleCount - 50) / 5;
     lostPoint += ratio * 10;
 
     return lostPoint;
@@ -319,8 +308,7 @@ export class QRUtil {
   public static getBCHTypeInfo(data: number): number {
     let d = data << 10;
     while (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G15) >= 0) {
-      d ^=
-        QRUtil.G15 << (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G15));
+      d ^= QRUtil.G15 << (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G15));
     }
     return ((data << 10) | d) ^ QRUtil.G15_MASK;
   }
@@ -328,27 +316,16 @@ export class QRUtil {
   public static getBCHTypeNumber(data: number): number {
     let d = data << 12;
     while (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G18) >= 0) {
-      d ^=
-        QRUtil.G18 << (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G18));
+      d ^= QRUtil.G18 << (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G18));
     }
     return (data << 12) | d;
   }
 
-  private static G15 =
-    (1 << 10) | (1 << 8) | (1 << 5) | (1 << 4) | (1 << 2) | (1 << 1) | (1 << 0);
+  private static G15 = (1 << 10) | (1 << 8) | (1 << 5) | (1 << 4) | (1 << 2) | (1 << 1) | (1 << 0);
 
-  private static G18 =
-    (1 << 12) |
-    (1 << 11) |
-    (1 << 10) |
-    (1 << 9) |
-    (1 << 8) |
-    (1 << 5) |
-    (1 << 2) |
-    (1 << 0);
+  private static G18 = (1 << 12) | (1 << 11) | (1 << 10) | (1 << 9) | (1 << 8) | (1 << 5) | (1 << 2) | (1 << 0);
 
-  private static G15_MASK =
-    (1 << 14) | (1 << 12) | (1 << 10) | (1 << 4) | (1 << 1);
+  private static G15_MASK = (1 << 14) | (1 << 12) | (1 << 10) | (1 << 4) | (1 << 1);
 
   private static getBCHDigit(data: number): number {
     let digit = 0;
