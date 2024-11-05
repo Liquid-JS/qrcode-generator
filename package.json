@@ -40,29 +40,29 @@
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
-    "@eslint/js": "^9.12.0",
+    "@eslint/js": "^9.14.0",
     "@testdeck/mocha": "^0.3.3",
-    "@types/chai": "^5.0.0",
+    "@types/chai": "^5.0.1",
     "@types/eslint__js": "^8.42.3",
     "@types/mocha": "^10.0.9",
     "@types/node": "<21.0.0",
     "@types/source-map-support": "^0.5.10",
-    "chai": "^5.1.1",
+    "chai": "^5.1.2",
     "clean-package": "^2.2.0",
-    "eslint": "^9.12.0",
+    "eslint": "^9.14.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "husky": "^9.1.6",
-    "mocha": "^10.7.3",
-    "npm-check-updates": "^17.1.4",
+    "mocha": "^10.8.2",
+    "npm-check-updates": "^17.1.10",
     "prettier": "^3.3.3",
     "rimraf": "^6.0.1",
     "source-map-support": "^0.5.21",
     "standard-version": "^9.5.0",
     "ts-node": "^10.9.2",
-    "typedoc": "^0.26.10",
+    "typedoc": "^0.26.11",
     "typescript": "^5.6.3",
-    "typescript-eslint": "^8.10.0"
+    "typescript-eslint": "^8.13.0"
   },
   "scripts": {
     "build": "rimraf lib && tsc",
@@ -90,7 +90,7 @@
     "url": "https://github.com/Liquid-JS/qrcode-generator/issues"
   },
   "homepage": "https://styled-qr.liquidjs.io/",
-  "packageManager": "yarn@4.5.0",
+  "packageManager": "yarn@4.5.1",
   "clean-package": {
     "remove": [
       "packageManager",
