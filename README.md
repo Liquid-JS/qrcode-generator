@@ -1,112 +1,63 @@
 # QR Code Generator
 
-## Getting Started
+[![Version](https://img.shields.io/npm/v/@liquid-js/qrcode-generator.svg)](https://www.npmjs.org/package/@liquid-js/qrcode-generator)
 
-1.  Include qrcode.js in your html.
-2.  Prepare a place holder.
-3.  Generate QR and render it.
+JavaScript library for generating QR codes.
 
-```html
-<script type="text/javascript" src="qrcode.js"></script>
-```
+## Installation
 
-```html
-<div id="placeHolder"></div>
-```
-
-```javascript
-var typeNumber = 4;
-var errorCorrectionLevel = "L";
-var qr = qrcode(typeNumber, errorCorrectionLevel);
-qr.addData("Hi!");
-qr.make();
-document.getElementById("placeHolder").innerHTML = qr.createImgTag();
-```
+    npm install @liquid-js/qrcode-generator
 
 ## API Documentation
 
-### QRCodeFactory
+<https://liquid-js.github.io/qrcode-generator/>
 
-#### qrcode(typeNumber, errorCorrectionLevel) => <code>QRCode</code>
+## Usage
 
-Create a QRCode Object.
+### Browser
 
-| Param                | Type                | Description                                    |
-| -------------------- | ------------------- | ---------------------------------------------- |
-| typeNumber           | <code>number</code> | Type number (1 ~ 40), or 0 for auto detection. |
-| errorCorrectionLevel | <code>string</code> | Error correction level ('L', 'M', 'Q', 'H')    |
+```HTML
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>QR Code Generator</title>
+  </head>
+  <body>
+    <div id="placeHolder"></div>
+    <script type="module">
+      import { QRCode } from "https://unpkg.com/@liquid-js/qrcode-generator/lib/qr-code.js";
 
-#### qrcode.stringToBytes(s) : <code>number\[]</code>
+      const typeNumber = 4;
+      const errorCorrectionLevel = "L";
+      const qr = new QRCode(typeNumber, errorCorrectionLevel);
+      qr.addData("Hi!");
+      qr.make();
+      document.getElementById("placeHolder").innerHTML = qr.createImgTag();
+    </script>
+  </body>
+</html>
+```
 
-Encodes a string into an array of number(byte) using any charset.
-This function is used by internal.
-Overwrite this function to encode using a multibyte charset.
+### Node
 
-| Param | Type                | Description      |
-| ----- | ------------------- | ---------------- |
-| s     | <code>string</code> | string to encode |
+```js
+import { QRCode } from "@liquid-js/qrcode-generator";
 
-### QRCode
+const typeNumber = 4;
+const errorCorrectionLevel = "L";
+const qr = new QRCode(typeNumber, errorCorrectionLevel);
+qr.addData("Hi!");
+qr.make();
 
-#### addData(data, mode) => <code>void</code>
+console.log(qr.createASCII());
+```
 
-Add a data to encode.
+## License
 
-| Param | Type                | Description                                                |
-| ----- | ------------------- | ---------------------------------------------------------- |
-| data  | <code>string</code> | string to encode                                           |
-| mode  | <code>string</code> | Mode ('Numeric', 'Alphanumeric', 'Byte'(default), 'Kanji') |
+[MIT License](https://github.com/Liquid-JS/qrcode-generator/blob/master/LICENSE)
 
-#### make() => <code>void</code>
-
-Make a QR Code.
-
-#### getModuleCount() => <code>number</code>
-
-The number of modules(cells) for each orientation.
-_[Note] call make() before this function._
-
-#### isDark(row, col) => <code>boolean</code>
-
-The module at row and col is dark or not.
-_[Note] call make() before this function._
-
-| Param | Type                | Description         |
-| ----- | ------------------- | ------------------- |
-| row   | <code>number</code> | 0 ~ moduleCount - 1 |
-| col   | <code>number</code> | 0 ~ moduleCount - 1 |
-
-#### createDataURL(cellSize, margin) => <code>string</code>
-
-#### createImgTag(cellSize, margin, alt) => <code>string</code>
-
-#### createSvgTag(cellSize, margin) => <code>string</code>
-
-#### createTableTag(cellSize, margin) => <code>string</code>
-
-#### createASCII(cellSize, margin) => <code>string</code>
-
-Helper functions for HTML.
-_[Note] call make() before these functions._
-
-| Param    | Type                | Description            |
-| -------- | ------------------- | ---------------------- |
-| cellSize | <code>number</code> | default: 2             |
-| margin   | <code>number</code> | default: cellSize \* 4 |
-| alt      | <code>string</code> | (optional)             |
-
-#### createSvgTag(opts) => <code>string</code>
-
-| Param         | Type                 | Description            |
-| ------------- | -------------------- | ---------------------- |
-| opts          | <code>object</code>  | default: {}            |
-| opts.cellSize | <code>number</code>  | default: 2             |
-| opts.margin   | <code>number</code>  | default: cellSize \* 4 |
-| opts.scalable | <code>boolean</code> | default: false         |
-
-#### renderTo2dContext(context, cellSize) => <code>void</code>
-
-\--
+---
 
 This implementation is based on JIS X 0510:1999.
 
