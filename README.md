@@ -1,6 +1,8 @@
 # QR Code Generator
 
-[![Version](https://img.shields.io/npm/v/@liquid-js/qrcode-generator.svg)](https://www.npmjs.org/package/@liquid-js/qrcode-generator)
+[![GitHub license](https://img.shields.io/github/license/Liquid-JS/qrcode-generator.svg)](https://github.com/Liquid-JS/qrcode-generator/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/dm/@liquid-js/qrcode-generator.svg)](https://www.npmjs.com/package/@liquid-js/qrcode-generator)
+[![scope](https://img.shields.io/npm/v/@liquid-js/qrcode-generator.svg)](https://www.npmjs.com/package/@liquid-js/qrcode-generator)
 
 JavaScript library for generating QR codes.
 
@@ -57,7 +59,7 @@ console.log(qr.createASCII());
 
 [MIT License](https://github.com/Liquid-JS/qrcode-generator/blob/master/LICENSE)
 
----
+* * *
 
 This implementation is based on JIS X 0510:1999.
 
