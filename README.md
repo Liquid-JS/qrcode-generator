@@ -58,6 +58,10 @@ qr.make()
 console.log(qr.createASCII())
 ```
 
+## License
+
+[MIT License](https://github.com/Liquid-JS/qrcode-generator/blob/master/LICENSE)
+
 * * *
 
 This implementation is based on JIS X 0510:1999.
