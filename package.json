@@ -1,102 +1,102 @@
 {
-  "name": "@liquid-js/qrcode-generator",
-  "version": "1.0.2",
-  "description": "QR Code Generator implementation in JavaScript.",
-  "type": "module",
-  "main": "./lib/qr-code.js",
-  "types": "./lib/qr-code.d.ts",
-  "exports": {
-    "./package.json": {
-      "default": "./package.json"
+    "name": "@liquid-js/qrcode-generator",
+    "version": "1.0.2",
+    "description": "QR Code Generator implementation in JavaScript.",
+    "type": "module",
+    "main": "./lib/qr-code.js",
+    "types": "./lib/qr-code.d.ts",
+    "exports": {
+        "./package.json": {
+            "default": "./package.json"
+        },
+        ".": {
+            "types": "./lib/qr-code.d.ts",
+            "default": "./lib/qr-code.js"
+        },
+        "./lib/qrcode/QRCode.js": {
+            "types": "./lib/qrcode/QRCode.d.ts",
+            "default": "./lib/qrcode/QRCode.js"
+        },
+        "./lib/qrcode/QRCodeMinimal.js": {
+            "types": "./lib/qrcode/QRCodeMinimal.d.ts",
+            "default": "./lib/qrcode/QRCodeMinimal.js"
+        },
+        "./lib/qrcode/QRUtil.js": {
+            "types": "./lib/qrcode/QRUtil.d.ts",
+            "default": "./lib/qrcode/QRUtil.js"
+        },
+        "./lib/text/stringToBytes_UTF8.js": {
+            "types": "./lib/text/stringToBytes_UTF8.d.ts",
+            "default": "./lib/text/stringToBytes_UTF8.js"
+        },
+        "./lib/text/stringToBytes_SJIS.js": {
+            "types": "./lib/text/stringToBytes_SJIS.d.ts",
+            "default": "./lib/text/stringToBytes_SJIS.js"
+        }
     },
-    ".": {
-      "types": "./lib/qr-code.d.ts",
-      "default": "./lib/qr-code.js"
+    "files": [
+        "lib"
+    ],
+    "devDependencies": {
+        "@commitlint/cli": "^19.6.1",
+        "@commitlint/config-conventional": "^19.6.0",
+        "@stylistic/eslint-plugin": "^2.12.1",
+        "@testdeck/mocha": "^0.3.3",
+        "@types/chai": "^5.0.1",
+        "@types/mocha": "^10.0.10",
+        "@types/node": "<23.0.0",
+        "@types/source-map-support": "^0.5.10",
+        "chai": "^5.1.2",
+        "clean-package": "^2.2.0",
+        "commit-and-tag-version": "^12.5.0",
+        "eslint": "^9.17.0",
+        "eslint-plugin-import": "^2.31.0",
+        "eslint-plugin-jsdoc": "^50.6.1",
+        "eslint-plugin-prefer-arrow-functions": "^3.4.2",
+        "eslint-plugin-unused-imports": "^4.1.4",
+        "husky": "^9.1.7",
+        "mocha": "^11.0.1",
+        "npm-check-updates": "^17.1.13",
+        "rimraf": "^6.0.1",
+        "source-map-support": "^0.5.21",
+        "ts-node-maintained": "^10.9.4",
+        "typedoc": "^0.27.6",
+        "typescript": "^5.7.3",
+        "typescript-eslint": "^8.19.1"
     },
-    "./lib/qrcode/QRCode.js": {
-      "types": "./lib/qrcode/QRCode.d.ts",
-      "default": "./lib/qrcode/QRCode.js"
+    "scripts": {
+        "build": "rimraf lib && tsc -p tsconfig.lib.json",
+        "test": "mocha -p",
+        "lint": "eslint . --fix",
+        "prepublishOnly": "npm run build",
+        "prepare": "husky",
+        "release": "git diff --exit-code && commit-and-tag-version && git push --follow-tags origin",
+        "docs": "typedoc",
+        "prepack": "clean-package",
+        "postpack": "clean-package restore"
     },
-    "./lib/qrcode/QRCodeMinimal.js": {
-      "types": "./lib/qrcode/QRCodeMinimal.d.ts",
-      "default": "./lib/qrcode/QRCodeMinimal.js"
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Liquid-JS/qrcode-generator.git"
     },
-    "./lib/qrcode/QRUtil.js": {
-      "types": "./lib/qrcode/QRUtil.d.ts",
-      "default": "./lib/qrcode/QRUtil.js"
+    "keywords": [
+        "qr",
+        "qrcode",
+        "generator"
+    ],
+    "author": "HitkoDev <development@hitko.si>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Liquid-JS/qrcode-generator/issues"
     },
-    "./lib/text/stringToBytes_UTF8.js": {
-      "types": "./lib/text/stringToBytes_UTF8.d.ts",
-      "default": "./lib/text/stringToBytes_UTF8.js"
-    },
-    "./lib/text/stringToBytes_SJIS.js": {
-      "types": "./lib/text/stringToBytes_SJIS.d.ts",
-      "default": "./lib/text/stringToBytes_SJIS.js"
+    "homepage": "https://styled-qr.liquidjs.io/",
+    "packageManager": "yarn@4.6.0",
+    "clean-package": {
+        "remove": [
+            "packageManager",
+            "scripts",
+            "devDependencies",
+            "clean-package"
+        ]
     }
-  },
-  "files": [
-    "lib"
-  ],
-  "devDependencies": {
-    "@commitlint/cli": "^19.6.1",
-    "@commitlint/config-conventional": "^19.6.0",
-    "@eslint/js": "^9.17.0",
-    "@testdeck/mocha": "^0.3.3",
-    "@types/chai": "^5.0.1",
-    "@types/eslint__js": "^8.42.3",
-    "@types/mocha": "^10.0.10",
-    "@types/node": "<23.0.0",
-    "@types/source-map-support": "^0.5.10",
-    "chai": "^5.1.2",
-    "clean-package": "^2.2.0",
-    "eslint": "^9.17.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.2.1",
-    "husky": "^9.1.7",
-    "mocha": "^11.0.1",
-    "npm-check-updates": "^17.1.11",
-    "prettier": "^3.4.2",
-    "rimraf": "^6.0.1",
-    "source-map-support": "^0.5.21",
-    "standard-version": "^9.5.0",
-    "ts-node-maintained": "^10.9.4",
-    "typedoc": "^0.27.5",
-    "typescript": "^5.7.2",
-    "typescript-eslint": "^8.18.0"
-  },
-  "scripts": {
-    "build": "rimraf lib && tsc",
-    "test": "mocha -p",
-    "lint": "prettier -w . && eslint . --fix",
-    "prepublishOnly": "npm run build",
-    "prepare": "husky",
-    "release": "git diff --exit-code && standard-version && git push --follow-tags origin",
-    "docs": "typedoc",
-    "prepack": "clean-package",
-    "postpack": "clean-package restore"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Liquid-JS/qrcode-generator.git"
-  },
-  "keywords": [
-    "qr",
-    "qrcode",
-    "generator"
-  ],
-  "author": "HitkoDev <development@hitko.si>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Liquid-JS/qrcode-generator/issues"
-  },
-  "homepage": "https://styled-qr.liquidjs.io/",
-  "packageManager": "yarn@4.5.3",
-  "clean-package": {
-    "remove": [
-      "packageManager",
-      "scripts",
-      "devDependencies",
-      "clean-package"
-    ]
-  }
 }

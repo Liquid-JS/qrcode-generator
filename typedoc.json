@@ -1,6 +1,12 @@
 {
-  "$schema": "https://typedoc.org/schema.json",
-  "entryPoints": ["./src/qr-code.ts"],
-  "out": "docs",
-  "sort": ["kind", "instance-first", "source-order"]
+    "$schema": "https://typedoc.org/schema.json",
+    "entryPoints": [
+        "./src/qr-code.ts"
+    ],
+    "out": "docs",
+    "sort": [
+        "kind",
+        "instance-first",
+        "source-order"
+    ]
 }

@@ -1,17 +1,16 @@
 /**
  * OutputStream
+ *
  * @author Kazuhiko Arase
  */
 export abstract class OutputStream {
-  constructor() {}
-  public abstract writeByte(b: number): void;
-  public writeBytes(bytes: number[]): void {
-    for (let i = 0; i < bytes.length; i += 1) {
-      this.writeByte(bytes[i]);
+    constructor() { }
+    public abstract writeByte(b: number): void
+    public writeBytes(bytes: number[]): void {
+        bytes.forEach(val => this.writeByte(val))
     }
-  }
-  public flush(): void {}
-  public close(): void {
-    this.flush();
-  }
+    public flush(): void { }
+    public close(): void {
+        this.flush()
+    }
 }

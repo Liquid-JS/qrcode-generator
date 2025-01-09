@@ -21,43 +21,42 @@ JavaScript library for generating QR codes.
 ```HTML
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <title>QR Code Generator</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <div id="placeHolder"></div>
     <script type="module">
-      import { QRCode } from "https://unpkg.com/@liquid-js/qrcode-generator/lib/qr-code.js";
+        import { QRCode } from 'https://unpkg.com/@liquid-js/qrcode-generator/lib/qr-code.js'
 
-      const typeNumber = 4;
-      const errorCorrectionLevel = "L";
-      const qr = new QRCode(typeNumber, errorCorrectionLevel);
-      qr.addData("Hi!");
-      qr.make();
-      document.getElementById("placeHolder").innerHTML = qr.createImgTag();
+        const typeNumber = 4
+        const errorCorrectionLevel = 'L'
+        const qr = new QRCode(typeNumber, errorCorrectionLevel)
+        qr.addData('Hi!')
+        qr.make()
+        document.getElementById('placeHolder').innerHTML = qr.createImgTag()
     </script>
-  </body>
+</body>
+
 </html>
 ```
 
 ### Node
 
 ```js
-import { QRCode } from "@liquid-js/qrcode-generator";
+import { QRCode } from '@liquid-js/qrcode-generator'
 
-const typeNumber = 4;
-const errorCorrectionLevel = "L";
-const qr = new QRCode(typeNumber, errorCorrectionLevel);
-qr.addData("Hi!");
-qr.make();
+const typeNumber = 4
+const errorCorrectionLevel = 'L'
+const qr = new QRCode(typeNumber, errorCorrectionLevel)
+qr.addData('Hi!')
+qr.make()
 
-console.log(qr.createASCII());
+console.log(qr.createASCII())
 ```
-
-## License
-
-[MIT License](https://github.com/Liquid-JS/qrcode-generator/blob/master/LICENSE)
 
 * * *
 
