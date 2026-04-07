@@ -169,12 +169,12 @@ export class QRCodeMinimal {
     }
 
     /*private getDataCount(): number {
-    return this.qrDataList.length;
-  }
+        return this.qrDataList.length
+    }
 
-  private getData(index: number): QRData {
-    return this.qrDataList[index];
-  }*/
+    private getData(index: number): QRData {
+        return this.qrDataList[index]
+    }*/
 
     public isDark(row: number, col: number): boolean {
         if (this.modules[row][col] != null) {
