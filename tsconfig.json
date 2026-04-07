@@ -10,7 +10,7 @@
         "target": "es2024",
         "allowJs": true,
         "rootDir": "./src",
-        //"moduleResolution": "bundler",
+        "moduleResolution": "bundler",
         "declaration": true,
         "allowSyntheticDefaultImports": true,
         "strict": true,
