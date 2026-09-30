@@ -87,7 +87,7 @@ export class QRCodeMinimal {
     public static stringToBytesFuncs: {
         [encoding: string]: (s: string) => number[]
     } = {
-        default(s: string) {
+        default: (s: string) => {
             const bytes = []
             for (let i = 0; i < s.length; i += 1) {
                 const c = s.charCodeAt(i)
